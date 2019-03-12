@@ -2,14 +2,14 @@
   <div class="step-legend">
     <ng-container *ngFor="let step of steps; index as i; last as lst">
       <span class="lbl" [class.active]="activeStep === i">{{i + 1}}</span>
-      <span class="line" *ngIf="!lst"></span>
+      <div class="line" *ngIf="!lst"></div>
     </ng-container>
   </div>
   <div class="content">
     <ng-content></ng-content>
   </div>
   <div class="footer">
-    <button (click)=prevClick()>Previos</button>
+    <button (click)="prevClick()">Previos</button>
     <button (click)="nxtClick()">Next</button>
   </div>
 </div>

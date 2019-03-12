@@ -27,17 +27,18 @@ export class DialogService {
 
   // Dialog calls this. cleasn up the dialog here
   async afterClose(dlgRef: ComponentRef<DialogComponent<any>>) {
+    this.dialogs.splice(this.dialogs.indexOf(dlgRef), 1);
     this.componentCreatror.removeComponent(dlgRef);
     const lastDlg = this.dialogs[this.dialogs.length - 1];
     if (lastDlg) {
       lastDlg.instance.showBackdrop = true;
+      lastDlg.changeDetectorRef.detectChanges();
     }
   }
 
   // Invokes the close on dialog. Dont need to cleen the dilaog. It will be done later
   async closeDialog() {
-    const dlgRef = this.dialogs.pop();
-    await dlgRef.instance.invokeClose();
+    this.dialogs[this.dialogs.length - 1].instance.invokeClose();
   }
 
   async closeAll() {

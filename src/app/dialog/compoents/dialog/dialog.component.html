@@ -1,4 +1,4 @@
-<div class="root" [class.back-drop]="showBackdrop" (click)="backdropClick()">
+<div class="root dlg-backdrop" [class.back-drop]="showBackdrop" (click)="backdropClick($event)">
   <div class="dlg" [class.anim-in]="open" [class.anim-out]="!open" #dlg>
     <div class="title">
       <span class="text">{{options.title}}</span>

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, AfterViewInit, ComponentRef, ElementRef } from '@angular/core';
 import { DialogOptions, DialogButton } from '../../dialog-options';
-import { delay } from 'q';
 import { CreateComponentService } from 'src/app/component-creator/services/create-component.service';
 
 @Component({
@@ -33,8 +32,8 @@ export class DialogComponent<T> implements OnInit, AfterViewInit {
   async invokeClose() {
     return new Promise((resolve, reject) => {
       if (open) {
-        const div = (this.dlg.nativeElement as HTMLDivElement)
-        const animEnd = onanimationend = () => {
+        const div = (this.dlg.nativeElement as HTMLDivElement);
+        const animEnd = () => {
           this.closeCallback();
           resolve();
         };
@@ -55,12 +54,11 @@ export class DialogComponent<T> implements OnInit, AfterViewInit {
   }
 
   buttonClick(ev: MouseEvent, btn: DialogButton) {
-    ev.cancelBubble = true;
     btn.function();
   }
 
-  backdropClick() {
-    if (!this.options.isModel) {
+  backdropClick(ev: MouseEvent) {
+    if (!this.options.isModel && (ev.target as HTMLElement).classList.contains('dlg-backdrop')) {
       this.invokeClose();
     }
   }

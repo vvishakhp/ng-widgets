@@ -20,21 +20,26 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     transform: scale(1.1);
   }
+
+  z-index: 20;
 }
 
 .line {
   flex: 1 1 auto;
   height: 0px;
-  border: 1px solid rgba(0, 108, 180, 0.808);
+  // border: 1px solid rgba(0, 108, 180, 0.808);
 
   &::before {
     animation-name: line-grow;
     animation-duration: 500ms;
+    animation-fill-mode: both;
     width: 0px;
-    border: 1px solid rgba(180, 0, 0, 0.808);
+    border: 1px solid rgba(0, 108, 180, 0.808);
     left: 0px;
     content: ' ';
     height: 0px;
+    display: block;
+    z-index: 10;
   }
 }
 

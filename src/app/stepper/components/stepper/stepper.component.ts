@@ -24,7 +24,7 @@ export class StepperComponent implements OnInit, AfterContentInit {
   }
 
   prevClick() {
-    
+
   }
 
   nxtClick() {

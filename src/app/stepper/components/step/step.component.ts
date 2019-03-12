@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'rpa-step',
@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./step.component.scss']
 })
 export class StepComponent implements OnInit {
+
+  @Input()
+  enabled = true;
+
+  @Input()
+  compleated = false;
+
+  @Input()
+  label: string;
 
   constructor() { }
 
