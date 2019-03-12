@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { ContextMenuService } from './widgets/context-menu/services/context-menu.service';
-import { DialogService } from './widgets/dialog/services/dialog.service';
-import { FileManagerComponent } from './widgets/file-manager/components/file-manager/file-manager.component';
-import { DialogOptions } from './widgets/dialog/dialog-options';
-
+import { ContextMenuService } from './context-menu/services/context-menu.service';
+import { DialogService } from './dialog/services/dialog.service';
+import { FileManagerComponent } from './file-manager/components/file-manager/file-manager.component';
+import { DialogOptions } from './dialog/dialog-options';
 @Component({
-  selector: 'app-root',
+  selector: 'rpa-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -18,6 +17,15 @@ export class AppComponent {
 
   showMenu(ev: MouseEvent) {
     ev.preventDefault();
+    this.menuService.showMenu(ev, {
+      items: [
+        {
+          label: 'Test 1'
+        }, {
+          label: 'Test 2'
+        }
+      ]
+    });
   }
 
 
@@ -38,7 +46,7 @@ export class AppComponent {
           }
         ]
       };
-    }
+    };
     this.dialogService.showDialog(dlgOptions());
   }
 }

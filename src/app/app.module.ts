@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CanvasModule } from './canvas/canvas.module';
-import { FileManagerModule } from './widgets/file-manager/file-manager.module';
-import { DialogModule } from './widgets/dialog/dialog.module';
+import { FileManagerModule } from './file-manager/file-manager.module';
+import { DialogModule } from './dialog/dialog.module';
+import { ContextMenuModule } from './context-menu/context-menu.module';
+import { StepperModule } from './stepper/stepper.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,11 @@ import { DialogModule } from './widgets/dialog/dialog.module';
   ],
   imports: [
     BrowserModule,
-    CanvasModule,
     FileManagerModule,
-    DialogModule
+    DialogModule,
+    ContextMenuModule,
+    StepperModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
