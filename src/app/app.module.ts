@@ -7,6 +7,7 @@ import { FileManagerModule } from './file-manager/file-manager.module';
 import { DialogModule } from './dialog/dialog.module';
 import { ContextMenuModule } from './context-menu/context-menu.module';
 import { StepperModule } from './stepper/stepper.module';
+import { CanvasModule } from './canvas/canvas.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StepperModule } from './stepper/stepper.module';
     ContextMenuModule,
     StepperModule,
     FormsModule,
+    CanvasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

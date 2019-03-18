@@ -11,6 +11,8 @@ import { DialogOptions } from './dialog/dialog-options';
 export class AppComponent {
   title = 'workflow2';
 
+  testText: string = '';
+
   constructor(private menuService: ContextMenuService, private dialogService: DialogService) {
 
   }
