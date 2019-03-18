@@ -1,15 +1,15 @@
-import { Point } from '../models';
+import { Point, Box } from '../models';
+import { ShapeGroup, RectangleShape, TextShape } from '../shapes';
 
 export class SvgService {
   private svg: SVGSVGElement;
 
   constructor() {
-    this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this.svg.setAttributeNS(null, 'shape-rendering', 'crispEdges');
   }
 
   setSvg(svg: SVGSVGElement) {
     this.svg = svg;
+    this.svg.setAttributeNS(null, 'shape-rendering', 'crispEdges');
   }
 
   public get svgElement(): SVGSVGElement { return this.svg; }
@@ -18,5 +18,5 @@ export class SvgService {
     this.svg.setAttributeNS(null, 'height', size.y.toString());
     this.svg.setAttributeNS(null, 'width', size.x.toString());
   }
-
+  
 }

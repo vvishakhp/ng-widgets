@@ -2,7 +2,7 @@ import { Box, Point } from './models';
 
 export abstract class Shape {
 
-    protected el: SVGElement;
+    public el: SVGElement;
 
 
     /** Position */
@@ -22,10 +22,7 @@ export abstract class Shape {
     public set parentElement(p: SVGElement) {
         if (p) {
             this.parent = p;
-            if (this.el && this.el.parentElement) {
-                this.el.remove();
-            }
-            this.parent.appendChild(this.el);
+            p.appendChild(this.el);
         }
     }
 
@@ -97,8 +94,17 @@ export class IconShape extends Shape {
 
 export class ShapeGroup extends Shape {
 
-    constructor(parent: SVGElement) {
-        super('g', new Point(0, 0), parent);
+    constructor(pos: Point, parent: SVGElement) {
+        super('g', new Point(), parent);
+        this.position = pos;
+    }
+
+    private _pos: Point;
+
+    public get position() { return this._pos }
+    public set position(pos: Point) {
+        this._pos = pos;
+        this.el.setAttributeNS(null, 'transform', `translate(${pos.x},${pos.y})`);
     }
 
     public add(item: SVGElement) {
@@ -111,6 +117,7 @@ export class TextShape extends Shape {
     constructor(position: Point, parent: SVGElement, text: string) {
         super('text', position, parent);
         this.text = text;
+        this.el.setAttributeNS(null, 'text-anchor', 'middle');
     }
 
     public get text() { return this.txt; }
@@ -127,7 +134,7 @@ export class PathShape {
 
     private parentEl: SVGElement;
 
-    constructor(parent: SVGElement, start: Point) {
+    constructor(parent: SVGElement, start: Point, cornerRadius: number = 0) {
         this.points.push(start);
         this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     }
