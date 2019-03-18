@@ -1,11 +1,3 @@
-
-export interface Shape {
-    move(x?: number | Point, y?: number);
-    moveBy(x?: number | Point, y?: number);
-    scale(x?: number, y?: number);
-}
-
-
 export class Point {
 
     public constructor(public x = 0, public y = 0) { }
@@ -22,6 +14,7 @@ export class Point {
             this.x = x.x;
             this.y = x.y;
         }
+        return this;
     }
 
     public moveBy(x: Point | number = 0, y: number = 0) {
@@ -32,6 +25,7 @@ export class Point {
             this.x += x.x;
             this.y += x.y;
         }
+        return this;
     }
 }
 
@@ -52,15 +46,6 @@ export class Box extends Point {
         const dw = this.w - newW;
 
         this.moveBy(dw / 2, dh / 2);
-    }
-}
-
-export class Circle extends Point implements Shape {
-    constructor(public x: number = 0, public y: number = 0, public r: number = 0) {
-        super(x, y);
-    }
-
-    public scale(factor: number = 1) {
-        this.r *= factor
+        return this;
     }
 }

@@ -8,17 +8,7 @@ export class CanvasService {
 
   private svg: SVGSVGElement;
 
-  constructor(private svgService: SvgService) {
-    this.svg = svgService.svgElement;
+  constructor() {
   }
-
-  drawItem(itemDescription: ItemDescription): SVGGElement {
-    const g = this.svgService.createElement('g', []);
-    this.svg.appendChild(g);
-    return null;
-  }
-}
-
-export interface ItemDescription {
 
 }

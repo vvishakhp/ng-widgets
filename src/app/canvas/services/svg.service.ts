@@ -1,40 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Key } from 'protractor';
-import { Box } from '../models';
+import { Point } from '../models';
 
 export class SvgService {
   private svg: SVGSVGElement;
 
-  private readonly defaultRectangle: RectangleOptions;
-
   constructor() {
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    this.initDeafults();
+    this.svg.setAttributeNS(null, 'shape-rendering', 'crispEdges');
   }
 
-  public get svgElement(): SVGSVGElement { return this.svg };
-
-  public createElement(type: string, props: { key: string, value: string }[]) {
-    const el = document.createElementNS('http://www.w3.org/2000/svg', type);
-    props.forEach(prop => el[prop.key] = prop.value);
-    return el;
+  setSvg(svg: SVGSVGElement) {
+    this.svg = svg;
   }
 
-  public createRectangle(options: RectangleOptions) {
+  public get svgElement(): SVGSVGElement { return this.svg; }
 
+  setSvgSize(size: Point) {
+    this.svg.setAttributeNS(null, 'height', size.y.toString());
+    this.svg.setAttributeNS(null, 'width', size.x.toString());
   }
 
-  private initDeafults() {
-
-  }
-}
-
-export interface RectangleOptions {
-  box: Box;
-  parent: SVGElement;
-  addToParent: boolean;
-  cornerRadius: number;
-  stroke: number;
-  strokeColor: string;
-  fillColor: string;
 }
