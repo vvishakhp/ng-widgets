@@ -31,6 +31,27 @@ export abstract class Shape {
         this.position = position;
         this.parentElement = parentElemet;
     }
+
+    public get fill() {
+        return this.el.getAttributeNS(null, 'fill');
+    }
+    public set fill(fill: string) {
+        this.el.setAttributeNS(null, 'fill', fill);
+    }
+
+    public get stroke() {
+        return this.el.getAttributeNS(null, 'stroke');
+    }
+    public set stroke(stroke: string) {
+        this.el.setAttributeNS(null, 'stroke', stroke);
+    }
+
+    public get strokeWidth() {
+        return this.el.getAttributeNS(null, 'stroke-width');
+    }
+    public set strokeWidth(strokW: string) {
+        this.el.setAttributeNS(null, 'stroke-width', strokW);
+    }
 }
 
 export class RectangleShape extends Shape {

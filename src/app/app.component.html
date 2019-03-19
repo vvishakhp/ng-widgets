@@ -1,1 +1,21 @@
-<rpa-canvas></rpa-canvas>`
+<rpa-tabs>
+  <ng-template let-data>
+    <div>
+      <i class="fa fa-{{data.icon}}"></i>
+      {{data.text}}
+    </div>
+  </ng-template>
+
+  <rpa-tab-item [data]="{text:'Hello1', icon:'home'}">
+    This is content 1
+  </rpa-tab-item>
+  <rpa-tab-item [data]="{text:'Hello2' , icon:'info'}">
+    This is content 2
+  </rpa-tab-item>
+  <rpa-tab-item [data]="{text:'Hello3'}">
+    This is content 3
+  </rpa-tab-item>
+  <rpa-tab-item [data]="{text:'Hello4'}">
+    This is content 4
+  </rpa-tab-item>
+</rpa-tabs>

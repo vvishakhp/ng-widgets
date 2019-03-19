@@ -9,6 +9,12 @@ import { DialogOptions } from './dialog/dialog-options';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+  data = {
+    icon: 'info'
+  };
+
   title = 'workflow2';
 
   testText: string = '';
@@ -50,5 +56,9 @@ export class AppComponent {
       };
     };
     this.dialogService.showDialog(dlgOptions());
+  }
+
+  parse(i) {
+    return JSON.stringify(i);
   }
 }

@@ -8,6 +8,7 @@ import { DialogModule } from './dialog/dialog.module';
 import { ContextMenuModule } from './context-menu/context-menu.module';
 import { StepperModule } from './stepper/stepper.module';
 import { CanvasModule } from './canvas/canvas.module';
+import { TabsModule } from './tabs/tabs.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CanvasModule } from './canvas/canvas.module';
     ContextMenuModule,
     StepperModule,
     FormsModule,
-    CanvasModule
+    CanvasModule,
+    TabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
